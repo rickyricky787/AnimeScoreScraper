@@ -8,8 +8,10 @@ This is just a personal project I did to not only brush up my Python skills, but
 Enter the anime you want to know the score of. The rogram will perform a search on Google for said anime on MyAnimeList, AnimePlanet and AniList, and scrape needed data. The program will return the title of the anime, score, total number of votes, and a link to its page for each site, all scaled to a score of 100 for easy comparisons.
 
 ![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example1.png)
+(Note: You should check the link if the program scraped the right anime just in case. Some pages might not have a certain version of a title, like an OVA for example, and just scrapes the original)
 
 ## How To Run
 You must need Python 3 and BeautifulSoup 4 installed in order to run this program.
 Extract files to your computer and run **python3 animescorescraper.py** on terminal (remember to have it on the same directory)
+
 (Note: This was tested using Ubuntu 18.04, unsure of how/if it runs on other OS's)
