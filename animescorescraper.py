@@ -1,23 +1,27 @@
-# Anime Score Search using BeautifulSoup
+# Anime Ranking Search using BeautifulSoup
 # Author: Ricky Rodriguez
 
 import requests
 from bs4 import BeautifulSoup
 import re
-import os
 
 class Data:
-    def __init__(self, title = "None", score = 0.0, votes = 0.0, link = "None"):
+    def __int__(self, title = "None", score = 0.0, votes = 0.0, link = "None"):
         self.title = title
         self.score = score
         self.votes = votes
         self.link = link
 
-
-# Finds the link of the anime webpage in a website (MyAnimeList, Anime Planet, Anilist) from google
+"""
+Def: Finds the link of the anime webpage in a website (MyAnimeList, Anime Planet, Anilist)
+Input: User inputed "name", "keyword" and "website" of the webpage we plan on scraping
+Output: The link of the anime webpage (if found), "None" (if not found)
+"""
 def getLink(name, keyword, website):
 
     # Function will "google" the anime name, followed by the keyword (ex. Pokemon + MyAnimeList).
+    # Try to be specific, as it will give you the first link that pops up on google
+    # (ex. typing "Hunter X Hunter" would give you results for the 2011 ver., not the 1999 ver.)
     search = name + " " + keyword
     page = requests.get("https://www.google.com/search?q={}&num={}".format(search, 5))
     soup = BeautifulSoup(page.content, "html5lib")
@@ -42,13 +46,12 @@ def getLink(name, keyword, website):
     else:
         return "None"
 
-# Scraps MyAnimeList
 def MyAnimeListScrapper(name):
     anime = Data()
     anime.link = getLink(name, "MyAnimeList", "myanimelist.net/anime")
     if anime.link != "None":
         page = requests.get(anime.link)
-        soup = BeautifulSoup(page.content, "html5lib")
+        soup = BeautifulSoup(page.content, "html5lib") # "soup" means the WHOLE html code
         element_check = soup.select_one("div.fl-l.score") # If element_check is none, then no anime webpage exist
         if element_check is not None:
             container = element_check
@@ -62,13 +65,22 @@ def MyAnimeListScrapper(name):
                 anime.votes = float(anime.votes)
             else:
                 anime.votes = "N/A"
-            anime.title = soup.find("h1", {"class":"h1"})
+            anime.title = soup.find("span", {"class":"h1-title"})
             anime.title = anime.title.get_text()
         else:
+            # If there is no "fl-l.score", then link is incorrect / anime webpage not found
             anime.link = "None"
+            anime.score = 0.0
+            anime.votes = 0.0
+            anime.title = "None"
+    else:
+        # If no link was returned from getLink(), then anime webpage not found
+        # anime.link is already setto "None"
+        anime.score = 0.0
+        anime.votes = 0.0
+        anime.title = "None"
     return anime
 
-# Scraps Anime Planet
 def AnimePlanetScrapper(name):
     anime = Data()
     anime.link = getLink(name, "Anime Planet", "anime-planet.com/anime")
@@ -93,9 +105,15 @@ def AnimePlanetScrapper(name):
             anime.title = anime.title.get_text()
         else:
             anime.link = "None"
+            anime.score = 0.0
+            anime.votes = 0.0
+            anime.title = "None"
+    else:
+        anime.score = 0.0
+        anime.votes = 0.0
+        anime.title = "None"
     return anime
 
-# Scraps AniList
 def AniListScrapper(name):
     anime = Data()
     anime.link = getLink(name, "AniList", "anilist.co/anime")
@@ -119,9 +137,21 @@ def AniListScrapper(name):
             anime.title = anime.title.split(" · AniList")[0]
         else:
             anime.link = "None"
+            anime.score = 0.0
+            anime.votes = 0.0
+            anime.title = "None"
+    else:
+        anime.score = 0.0
+        anime.votes = 0.0
+        anime.title = "None"
     return anime
 
-# To format output
+"""
+Def: Function to format the output into a table
+Input: Website name, name of the anime, score, votes, and link of the webpage
+Output: Anime stats formatted
+"""
+
 def TableOutput(website, name, score, votes, link):
     if type(score) == str and type(votes) == str:
         print("%-12s %-15.15s %-8s %-8s" % (website, name, score, votes), link)
@@ -130,12 +160,8 @@ def TableOutput(website, name, score, votes, link):
         
 ####################################################################################
 # Main function
-def main():
-    print("---------------------------------------------------------------")
-    print("|                  Anime Score Web Scrapper                   |")
-    print("| Get anime scores from MyAnimeList, Anime Planet and AniList |")
-    print("---------------------------------------------------------------")
-    anime_search = input("Enter Anime Name: ")
+while (True):
+    anime_search = input("Enter name of anime: ")
     print()
     print("Scraping...")
     print()
@@ -143,19 +169,19 @@ def main():
     data1 = MyAnimeListScrapper(anime_search)
     data2 = AnimePlanetScrapper(anime_search)
     data3 = AniListScrapper(anime_search)
-    
+
     TableOutput("Website", "Anime Name", "Score", "Votes", "Link")
     TableOutput("MyAnimeList", data1.title, data1.score, data1.votes, data1.link)
     TableOutput("AnimePlanet", data2.title, data2.score, data2.votes, data2.link)
     TableOutput("Anilist", data3.title, data3.score, data3.votes, data3.link)
 
     print()
-    print("Note: Scores have been converted to a scale of 100 for easy comparisons")
-    print()
-    again = input("Enter 'y' to search again. Enter anything else to quit: ")
-    if (again == "y"):
-        os.system('cls||clear')
-        main()
+    print("Scores were converted to a scale of 100.")
 
-# Start program
-main()
+    print()
+    command = input("Enter 'Y' to perform another search. Enter anything else to quit: ")
+    print()
+    if command == 'Y' or command == 'y':
+        continue
+    else:
+        break
