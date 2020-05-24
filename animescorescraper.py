@@ -116,6 +116,7 @@ def AnimePlanet(name):
             else:
                 results.votes = "N/A"
             results.title = soup.find("h1", {"itemprop":"name"})
+            results.title = results.title.get_text()
             results.image = soup.find("img", {"class":"screenshots"})
             results.image = str(results.image)
             results.image = results.image.split('src="')[1].split('?t=')[0]
