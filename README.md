@@ -11,11 +11,6 @@ I also wanted to learn how to use Tkinter. I had some difficulty layering out th
 ## How It Works
 Enter the anime you want to know the score of. The program will perform a search on Google for said anime on MyAnimeList, AnimePlanet and AniList, and scrape data. This is done to prevent problems such as a page not finding results for an English name of show if searched directly on site, misspellings, etc. The program will return the title of the anime, score, total number of votes, and a link to its page for each site, all scaled to a score of 100 for easy comparisons.
 
-![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example1.png)
-
-![Example](https://github.com/rickyricky787/AnimeScoreScraper-GUI/blob/master/example2.png) ![Example](https://github.com/rickyricky787/AnimeScoreScraper-GUI/blob/master/example3.png)
-(Note: You should check the link if the program scraped the right anime just in case. Some pages might not have a certain version of a title, like an OVA for example, and just scrapes the original)
-
 ## How To Run
 You must need Python 3 and BeautifulSoup 4 installed in order to run this program.
 Extract files to your computer and run **python3 main.py** on terminal.
@@ -23,6 +18,13 @@ Extract files to your computer and run **python3 main.py** on terminal.
 To use the GUI version, yiu need to have Tkinter, Pillow, and ImageTK installled. Extract files and run **python3 main_gui.py** on terminal.
 
 (Note: This was tested using Ubuntu 18.04, unsure of how/if it runs on other OS's)
+
+## Preview
+![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example1.png)
+![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example2.png)
+![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example3.png)
+
+(Note: You should check the link if the program scraped the right anime just in case. Some pages might not have a certain version of a title, like an OVA for example, and just scrapes the original)
 
 ## Credit
 The file **tkHyperlinkManager.py** was created by Fredrik Lundh, modified by me.
