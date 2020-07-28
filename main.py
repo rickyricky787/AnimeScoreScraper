@@ -5,10 +5,7 @@ from animescorescraper import MyAnimeList, AnimePlanet, AniList
 
 # A funtion to format output
 def TableOutput(website, name, score, votes, link):
-    if type(score) == str and type(votes) == str:
-        print("%-12s %-15.15s %-8s %-8s" % (website, name, score, votes), link)
-    elif type(score) == float and type(votes) == float:
-        print("%-12s %-15.15s %-8.2f %-8.0f" % (website, name, score, votes), link)
+    print("%-12s %-15.15s %-8s %-8s" % (website, name, score, votes), link)
         
 # Main function
 while (True):

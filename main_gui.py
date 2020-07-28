@@ -94,15 +94,17 @@ def click_me(event = "None"):
     link3 = lambda : webbrowser.open(anilist_data.link)
     hyperlink = tkHyperlinkManager.HyperlinkManager(text)
 
+    #
+
     # Inserting into textbox
     text.insert(tk.END, "Website" + "       " + "Title" + "             " + "Score" + "   " + "Votes\n")
     text.insert(tk.END, "--------------------------------------------------\n")
     text.insert(tk.END, "MyAnimeList", hyperlink.add(link1))
-    text.insert(tk.END, "   " + myanime_data.title + "   " + str(myanime_data.conv_score)[:4] + "   " + str(myanime_data.votes) + "\n")
+    text.insert(tk.END, "   " + myanime_data.title + "   " + myanime_data.conv_score + "   " + myanime_data.votes + "\n")
     text.insert(tk.END, "AnimePlanet", hyperlink.add(link2))
-    text.insert(tk.END, "   " + aniplanet_data.title + "   " + str(aniplanet_data.conv_score)[:4] + "   " + str(aniplanet_data.votes) + "\n")
+    text.insert(tk.END, "   " + aniplanet_data.title + "   " + aniplanet_data.conv_score + "   " + aniplanet_data.votes + "\n")
     text.insert(tk.END, "AniList", hyperlink.add(link3))
-    text.insert(tk.END, "       " + anilist_data.title + "   " + str(anilist_data.conv_score)[:4] + "   " + str(anilist_data.votes) + "\n")
+    text.insert(tk.END, "       " + anilist_data.title + "   " + anilist_data.conv_score + "   " + anilist_data.votes + "\n")
     text.configure(state='disabled')
 
     # Only add image if it is found
