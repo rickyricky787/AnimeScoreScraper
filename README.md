@@ -3,6 +3,7 @@ Scrapes anime scores from MyAnimeList, Anime Planet, and AniList using Beautiful
 There are two different versions:
 - One that you can run in the terminal (main.py)
 - Another one that runs with a GUI using Tkinter (main_gui.py)
+- You can also demo it at https://anime-scores.herokuapp.com/
 
 ## Purpose
 This is just a personal project I did to not only brush up my Python skills, but to also learn how to web scrape using BeautifulSoup. I chose to do an anime score web scraper because I wanted to do a project based on something I enjoy.
