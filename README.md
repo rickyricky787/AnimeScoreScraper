@@ -1,4 +1,4 @@
-# Anime Score Scrapper
+# Anime Score Scraper
 Scrapes anime scores from MyAnimeList, Anime Planet, and AniList using BeautifulSoup
 There are two different versions:
 - One that you can run in the terminal (main.py)
@@ -21,9 +21,9 @@ To use the GUI version, yiu need to have Tkinter, Pillow, and ImageTK installled
 (Note: This was tested using Ubuntu 18.04, unsure of how/if it runs on other OS's)
 
 ## Preview
-![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example1.png)
-![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example2.png)
-![Example](https://github.com/rickyricky787/AnimeScoreScrapper/blob/master/example3.png)
+![Example](https://github.com/rickyricky787/AnimeScoreScraper/blob/master/example1.png)
+![Example](https://github.com/rickyricky787/AnimeScoreScraper/blob/master/example2.png)
+![Example](https://github.com/rickyricky787/AnimeScoreScraper/blob/master/example3.png)
 
 (Note: You should check the link if the program scraped the right anime just in case. Some pages might not have a certain version of a title, like an OVA for example, and just scrapes the original)
 
