@@ -82,15 +82,9 @@ def MyAnimeList(name):
             else:
                 results.votes = "N/A"
 
-            results.title = soup.find("span", {"itemprop":"name"})
-
-            # To remove alternate title (just return the main one)
-            title_string = str(results.title)
-            if "<br/>" in title_string:
-                results.title = title_string.split('itemprop="name">')[1].split('<br/>')[0]
-            else:
-                results.title = results.title.get_text()
-
+            results.title = soup.find("h1", {"class":"title-name"})
+            results.title = (results.title).get_text()
+            
             results.image = soup.find("img", {"itemprop":"image"})
             results.image = str(results.image)
             results.image = results.image.split('data-src="')[1].split('" ')[0]
