@@ -1,7 +1,7 @@
 # Main program for scraping anime ranking sites
 # Author: Ricky Rodriguez
 
-from animescorescraper import MyAnimeList, AnimePlanet, AniList
+from animescorescraper import *
 
 # A funtion to format output
 def TableOutput(website, name, score, votes, link):
@@ -15,9 +15,9 @@ if __name__ == "__main__":
         print("Scraping...")
         print()
 
-        data1 = MyAnimeList(anime_search)
-        data2 = AnimePlanet(anime_search)
-        data3 = AniList(anime_search)
+        data1 = MyAnimeListData(MyAnimeListLink(anime_search))
+        data2 = AnimePlanetData(AnimePlanetLink(anime_search))
+        data3 = AniListData(AniListLink(anime_search))
 
         TableOutput("Website", "Anime Name", "Score", "Votes", "Link")
         TableOutput("MyAnimeList", data1.title, data1.conv_score, data1.votes, data1.link)
