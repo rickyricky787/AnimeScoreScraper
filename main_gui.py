@@ -9,7 +9,7 @@ import requests
 from io import BytesIO
 
 import tkHyperlinkManager
-from animescorescraper import MyAnimeList, AnimePlanet, AniList
+from animescorescraper import *
  
 
 # Create an instance of the Tk class
@@ -68,9 +68,9 @@ def click_me(event = "None"):
 
     # Functions to scrape data
     anime_search = name.get()
-    myanime_data = MyAnimeList(anime_search)
-    aniplanet_data = AnimePlanet(anime_search)
-    anilist_data = AniList(anime_search)
+    myanime_data = MyAnimeListData(MyAnimeListLink(anime_search))
+    aniplanet_data = AnimePlanetData(AnimePlanetLink(anime_search))
+    anilist_data = AniListData(AniListLink(anime_search))
 
     # Creating textbox
     text = tk.Text(tool_bar, width = 50, height = 5)
